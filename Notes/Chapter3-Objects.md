@@ -1,14 +1,14 @@
 ﻿# 第3章 对象Object
 ## 0. 引言 
-+ Js数据类型有两种：简单数据类型和对象
++ JS数据类型有两种：简单数据类型和对象
 
 ![JS数据类型](http://ocbao1wc2.bkt.clouddn.com/20161130JSshuju.jpg) 
 
-+ JS的对象是可变的键控集合(keyed collection)
-+ 对象是属性的**容器**。每个属性都拥有名字和值
++ JS对象是可变的键控集合(keyed collection)
++ 对象是属性的**容器**。每个属性都拥有名字和值:
 	+  名字是包括空字符串在内的任意字符串
 	+  值是除undefined以外的任何值
-+ JavaScript的对象是无类型的(class-free)
++ JS对象是无类型的(class-free)
 + JS包含一种原型链的特性，正确使用它可以减少对象初始化时消耗的时间和内存
 
 ## 1. 对象字面量 Object Literals
@@ -48,8 +48,8 @@ fight.equipment && fight.equipment.model		//undefined
 	+ hasOwnProperty方法
 
 ## 7. 枚举 Enumeration
-+ for in 语句遍历所有属性名，包含原型链中的属性，可以使用typeof或hasOwnProperty()来过滤。此语句遍历的属性名出现的顺序是不固定的。
-+ 若需要属性名按照特定顺序进行排列，则需要使用for循环语句。
++ for in 语句遍历所有属性名，包含原型链中的属性，可以使用typeof或hasOwnProperty()来过滤。for in语句遍历的属性名出现的顺序是不固定的。
++ 若需要属性名按照特定顺序进行排列，则需要使用for语句。
 
 ## 8. 删除 Delete
 + 删除对象的属性**可能**会让来自原型链中的属性暴露出来。
@@ -57,4 +57,4 @@ fight.equipment && fight.equipment.model		//undefined
 ## 9. 减少全局变量污染 Global Abatement
 + 全局变量削弱的程序的灵活性，应该避免使用。
 + 最小化使用全局变量的方法之一是只创建一个唯一的命名空间。
-+ 或者使用闭包，详见下一章。
++ 或者使用闭包，详见[下一章](https://github.com/Zhongwei1986/JS-the-good-parts/blob/master/Notes/Chapter4-Functions.md)。
