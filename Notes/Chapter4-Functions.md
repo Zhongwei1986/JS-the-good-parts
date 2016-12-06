@@ -1,9 +1,9 @@
 ﻿# 第4章 函数Functions
-##引言
+## 引言
 + 函数包含一组语句，它们是JS的基础模块单元，用于代码复用、信息隐藏和组合调用。
 + **函数用于指定对象的行为。**
 + 编程(program)就是将一组需求分解成一组函数和数据结构的技能！
-##函数对象Function Object
+## 函数对象Function Object
 + JS中的函数就是对象。对象是名值对的集合并游泳一个连到原型对象的隐藏链接
 	+ 对象字面量产生的对象连接到Object.prototype
 	+ 函数对象连接到Function.prototype(该原型对象本身连接到Object.prototype)
@@ -17,38 +17,46 @@
 
 + 函数与众不同之处在于它们可以被调用。
 
-##函数字面量Function Literal
+## 函数字面量Function Literal
++ 函数字面量包括4个部分：
+	+ 保留字function
+	+ 函数名，可以被省略。如果省略，函数叫做匿名函数(anonymous)
+	+ 圆括号内的参数，多个参数之间用逗号分隔。这些参数的名称将被定义为函数中的变量。他们不像普通变量初始化为undefined，而是在该函数被调用时初始化为实际提供的参数的值（实参）。
+	+ 包含在花括号内的一组语句。这些语句是函数的主体，它们在函数调用时执行。
++ 通过函数字面量创建的函数对象包含一个连到外部上下文的连接，这被称为闭包(closure)。
 
-##调用Invocation
+## 调用Invocation
++ 调用一个函数会暂停当前函数的执行，传递控制权和参数给新函数。除了声明时定义的形参，每个函数还接受两个附加的参数：this和arguments。
++ 参数this非常重要，它的值取决于调用的模式。
+### 方法调用模式The Method Invocation Pattern
 
-###方法调用模式The Method Invocation Pattern
 
-###函数调用模式The Function Invocation Pattern
+### 函数调用模式The Function Invocation Pattern
 
-###构造器调用模式The Constructor Invocation Pattern
+### 构造器调用模式The Constructor Invocation Pattern
 
-###Apply调用模式The Apply Invocation Pattern
+### Apply调用模式The Apply Invocation Pattern
 
-##参数Arguments
+## 参数Arguments
 
-##返回Return
+## 返回Return
 
-##异常Exceptions
+## 异常Exceptions
 
-##扩充类型的功能Augmenting Types
+## 扩充类型的功能Augmenting Types
 
-##递归Recursion
+## 递归Recursion
 
-##作用域Scope
+## 作用域Scope
 
-##闭包Closure
+## 闭包Closure
 
-##回调Callbacks
+## 回调Callbacks
 
-##模块Module
+## 模块Module
 
-##级联Cascade
+## 级联Cascade
 
-##柯里化Curry
+## 柯里化Curry
 
-##记忆Memoization
+## 记忆Memoization
