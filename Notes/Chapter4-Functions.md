@@ -108,7 +108,9 @@ document.writeln(myQuo.get_status());	//打印"confused"
 ![](http://ocbao1wc2.bkt.clouddn.com/20161212myquo.jpg)
 
 + 一个函数，如果创建的目的就是希望结合 new 的前缀来调用，那它就称为构造器函数，按照约定，它们保存在以大写格式命名的变量里。
+
 ### Apply调用模式The Apply Invocation Pattern
+
 + 因为JS是一门函数式的面向对象编程语言，所以函数可以拥有方法
 + apply方法让我们构建一个参数数组传递给调用函数，它也允许我们选择this的值。apply方法接受两个参数，第一个是要绑定给this的值，第二个就是参数数组.
 
