@@ -20,11 +20,11 @@
 ## 函数字面量Function Literal
 + 函数对象通过函数字面量来创建：
 ```javascript
-	//创建一个名叫 add 的变量，并用来把两个数字相加的函数赋值给它；
+//创建一个名叫 add 的变量，并用来把两个数字相加的函数赋值给它；
 	
-	var add = function (a, b) {
-		return a + b;
-	}
+var add = function (a, b) {
+	return a + b;
+}
 ```
 + 函数字面量包括4个部分：
 	+ 保留字function
@@ -41,17 +41,17 @@
 + 当一个方法被调用时，this绑定到该对象
 + 如果调用表达式包含一个提取属性的动作(即包含一个.点表达式或[subscript]下标表达式)，那么它就是当做一个方法被调用
 ```javascript
-	var myObject = {
-		value: 0,
-		increment: function (inc) {
-			this.value += typeof inc === ''number ? inc : 1;  //inc是数字则加给value，否在value加1
-		}
-	}；
-	myObject.increment();
-	document.wirteln(myObject.value);	// 1
+var myObject = {
+	value: 0,
+	increment: function (inc) {
+		this.value += typeof inc === ''number ? inc : 1;  //inc是数字则加给value，否在value加1
+	}
+}；
+myObject.increment();
+document.wirteln(myObject.value);	// 1
 	
-	myObject.increment(2);
-	document.wirteln(myObject.value);  // 3
+myObject.increment(2);
+document.wirteln(myObject.value);  // 3
 ```
 + 方法可以使用this调用自己所属的对象，所以它能从对象中取值或对对象进行修改
 + **this到对象的绑定发生在调用的时候。这个“超级”延迟绑定使得函数可以对this高度复用。**
@@ -59,28 +59,28 @@
 ### 函数调用模式The Function Invocation Pattern
 + 当一个函数并非一个对象的属性时，那么它就是被当做一个函数来调用：
 ```javascript
-	var sum = add(3,4)  //sun的值为7
+var sum = add(3,4)  //sun的值为7
 ```
 + 此模式调用时，this被绑定至全局对象。这是语言设计上的一个错误。
 + 倘若语言设计正确，那么当内部函数被调用时，this应该仍然绑定到外部函数的this变量。
 + 这个设计错误的后果是方法不能利用内部函数来帮助它工作，因为内部函数的this被绑定至错误的值，所以不能共享该方法对对象的访问权。
 + 有一种解决方案：如果该方法定义一个变量并给它赋值为this，那么内部函数就可以通过这个变量访问到外部函数的this，即方法所属对象。按照约定，此变量命名为that。
 ```javascript
-	//给myObject 增加一个double方法
-	myObject.double = function () {
-		var that = this;
+//给myObject 增加一个double方法
+myObject.double = function () {
+	var that = this;
 		
-		var helper = function () {
-			that.value = add(that.value, that.vale);
-		}
-
-		helper();		//以函数的形式调用helper
+	var helper = function () {
+	that.value = add(that.value, that.vale);
 	}
 
-	//以方法的形式调用double
-	
-	myObject.double();
-	document.writeln(myObject.value);		// 6
+	helper();		//以函数的形式调用helper
+}
+
+//以方法的形式调用double
+
+myObject.double();
+document.writeln(myObject.value);		// 6
 ```
 ### 构造器调用模式The Constructor Invocation Pattern
 + JS是一门基于原型继承的语言，意味着对象可以直接从其它对象继承属性，该语言是无类型的。
@@ -89,26 +89,45 @@
 + 如果在一个函数前面带上 new 来调用，那么背地里将会创建一个连接到该函数的prototype成员(**并非Function.prototype**)的新对象，同时this会绑定到那个新对象上。
 + new前缀也会改变 return 语句的行为
 ```javascript
-	//创建一个名为 Quo 的构造器函数。它构造一个带有 status 属性的对象。
-	var Quo = function (string) {
-		this.status = string;
-	};
+//创建一个名为 Quo 的构造器函数。它构造一个带有 status 属性的对象。
+var Quo = function (string) {
+	this.status = string;
+};
 	
-	//给 Quo 的所有实例提供一个名叫 get_status 的公共方法。
-	Quo.prototype.get_status = function () {
-		return this.status;
-	}
+//给 Quo 的所有实例提供一个名叫 get_status 的公共方法。
+Quo.prototype.get_status = function () {
+	return this.status;
+}
 
-	//构造一个 Quo 实例。
-	var myQuo = new Quo("confused");
+//构造一个 Quo 实例。
+var myQuo = new Quo("confused");
 	
-	document.writeln(myQuo.get_status());	//打印"confused"
+document.writeln(myQuo.get_status());	//打印"confused"
 ```
 
 ![](http://ocbao1wc2.bkt.clouddn.com/20161212myquo.jpg)
 
++ 一个函数，如果创建的目的就是希望结合 new 的前缀来调用，那它就称为构造器函数，按照约定，它们保存在以大写格式命名的变量里。
 ### Apply调用模式The Apply Invocation Pattern
++ 因为JS是一门函数式的面向对象编程语言，所以函数可以拥有方法
++ apply方法让我们构建一个参数数组传递给调用函数，它也允许我们选择this的值。apply方法接受两个参数，第一个是要绑定给this的值，第二个就是参数数组.
 
+```javascript
+//构造一个包含两个数字的数组，并将它们相加。
+	
+var array = [3, 4];
+var sum = add.apply(null, array);     // sum 值为7
+	
+//构造一个包含 status 成员的对象。
+	
+var statusObject = {
+	status: 'A-OK',
+};
+
+//statusObject 并没有继承自 Quo.prototype,但我们可以在 statusObject 上调用
+//get_status 方法，尽管其没有一个名为 get_status 的方法
+var status = Quo.prototype.get_status.apply(statusObject);	// status 值为'A-OK'
+```
 ## 参数Arguments
 
 ## 返回Return
