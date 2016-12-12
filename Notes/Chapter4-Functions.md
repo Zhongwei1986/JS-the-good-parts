@@ -18,6 +18,14 @@
 + 函数与众不同之处在于它们可以被调用。
 
 ## 函数字面量Function Literal
++ 函数对象通过函数字面量来创建：
+```javascript
+	//创建一个名叫 add 的变量，并用来把两个数字相加的函数赋值给它；
+	
+	var add = function (a, b) {
+		return a + b;
+	}
+```
 + 函数字面量包括4个部分：
 	+ 保留字function
 	+ 函数名，可以被省略。如果省略，函数叫做匿名函数(anonymous)
@@ -29,11 +37,75 @@
 + 调用一个函数会暂停当前函数的执行，传递控制权和参数给新函数。除了声明时定义的形参，每个函数还接受两个附加的参数：this和arguments。
 + 参数this非常重要，它的值取决于调用的模式。
 ### 方法调用模式The Method Invocation Pattern
-
-
++ 方法： 函数保存为一个对象的属性
++ 当一个方法被调用时，this绑定到该对象
++ 如果调用表达式包含一个提取属性的动作(即包含一个.点表达式或[subscript]下标表达式)，那么它就是当做一个方法被调用
+```javascript
+	var myObject = {
+		value: 0,
+		increment: function (inc) {
+			this.value += typeof inc === ''number ? inc : 1;  //inc是数字则加给value，否在value加1
+		}
+	}；
+	myObject.increment();
+	document.wirteln(myObject.value);	// 1
+	
+	myObject.increment(2);
+	document.wirteln(myObject.value);  // 3
+```
++ 方法可以使用this调用自己所属的对象，所以它能从对象中取值或对对象进行修改
++ **this到对象的绑定发生在调用的时候。这个“超级”延迟绑定使得函数可以对this高度复用。**
++ 通过this可取得它们所属对象的上下文的方法称为公共方法(pubilc method)
 ### 函数调用模式The Function Invocation Pattern
++ 当一个函数并非一个对象的属性时，那么它就是被当做一个函数来调用：
+```javascript
+	var sum = add(3,4)  //sun的值为7
+```
++ 此模式调用时，this被绑定至全局对象。这是语言设计上的一个错误。
++ 倘若语言设计正确，那么当内部函数被调用时，this应该仍然绑定到外部函数的this变量。
++ 这个设计错误的后果是方法不能利用内部函数来帮助它工作，因为内部函数的this被绑定至错误的值，所以不能共享该方法对对象的访问权。
++ 有一种解决方案：如果该方法定义一个变量并给它赋值为this，那么内部函数就可以通过这个变量访问到外部函数的this，即方法所属对象。按照约定，此变量命名为that。
+```javascript
+	//给myObject 增加一个double方法
+	myObject.double = function () {
+		var that = this;
+		
+		var helper = function () {
+			that.value = add(that.value, that.vale);
+		}
 
+		helper();		//以函数的形式调用helper
+	}
+
+	//以方法的形式调用double
+	
+	myObject.double();
+	document.writeln(myObject.value);		// 6
+```
 ### 构造器调用模式The Constructor Invocation Pattern
++ JS是一门基于原型继承的语言，意味着对象可以直接从其它对象继承属性，该语言是无类型的。
++ 这偏离了当今编程语言的主流风格，当今大多数语言都是基于类的语言。尽管原型继承极富表现力，但它并未被广泛立即。
++ JavaScript本身对它原型的本质也缺乏信心，所以它提供了一套和基于类的语言类似的对象构建语法。
++ 如果在一个函数前面带上 new 来调用，那么背地里将会创建一个连接到该函数的prototype成员(**并非Function.prototype**)的新对象，同时this会绑定到那个新对象上。
++ new前缀也会改变 return 语句的行为
+```javascript
+	//创建一个名为 Quo 的构造器函数。它构造一个带有 status 属性的对象。
+	var Quo = function (string) {
+		this.status = string;
+	};
+	
+	//给 Quo 的所有实例提供一个名叫 get_status 的公共方法。
+	Quo.prototype.get_status = function () {
+		return this.status;
+	}
+
+	//构造一个 Quo 实例。
+	var myQuo = new Quo("confused");
+	
+	document.writeln(myQuo.get_status());	//打印"confused"
+```
+
+![](http://ocbao1wc2.bkt.clouddn.com/20161212myquo.jpg)
 
 ### Apply调用模式The Apply Invocation Pattern
 
