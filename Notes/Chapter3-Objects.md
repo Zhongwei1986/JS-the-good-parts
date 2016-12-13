@@ -8,7 +8,7 @@
 + [原型 Prototype](#原型-Prototype)
 + [反射 Reflection](#反射-Reflection)
 + [枚举 Enumeration](#枚举-Enumeration)
-+ [删除 Delete](#删除-Delete)
++ [删除 Delete](#删除-delete)
 + [Global Abatement 减少全局变量污染](#global-abatement-减少全局变量污染)
 
 ## 引言 
