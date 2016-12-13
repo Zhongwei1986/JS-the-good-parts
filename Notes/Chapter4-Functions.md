@@ -186,7 +186,7 @@ document.wirteln('"' + "  neat  ".trim() + '"');
 ```
 + 基本类型的原型是公用结构，在类库混用时务必小心，一个保险的做法是只在确定没有该方法时才添加它：
 ```javascript
-
+// 符合条件时才添加方法
 
 Function.prototype.method = function (name, func) {
 	if(!this.prototype[name]) {
@@ -196,7 +196,26 @@ Function.prototype.method = function (name, func) {
 };
 ```
 ## 递归Recursion
++ 递归函数就是会直接或间接调用自身的一种函数。
++ 递归是一种强大的编程技术，它把一个问题分解成一组相似的子问题，每一个都用一般的方法去解决。一般来说，递归函数调用自身去解决它的子问题。
++ 递归函数可以非常高效地操作树形结构，比如浏览器的DOM。每次递归调用处理指定的树的一小段。
+```javascript
+//定义 walk_the_DOM 函数，它从某个指定的节点开始，按HTML源码中的顺序访问该树的某个节点。
+//它会调用一个函数，并依次传递每个节点给它。walk_the_DOM 调用自身去处理每个节点
 
+var walk_the_DOM = function walk(node, func) {
+	func(node);
+	node = node.firstChild;
+	while (node) {
+		walk(node, func);
+		node = node.nextSibling;
+	}
+};
+
+// 定义 getElementByAttribute 函数。它以一个属性名称字符串和一个可选的匹配值作为参数。
+// 它调用 walk_the_DOM，传递一个用来查找节点属性名的函数作为参数
+```
+[Demo](https://github.com/Zhongwei1986/JS-the-good-parts/blob/master/Demos/Chapter4/1-walk_the_DOM)
 ## 作用域Scope
 
 ## 闭包Closure
