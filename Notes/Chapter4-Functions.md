@@ -1,5 +1,5 @@
 ﻿# 第4章 函数Functions
-##目录
+##目录  
 + [函数对象Function Object](#函数对象function-object)
 + [函数字面量Function Literal](#函数字面量function-literal)
 + [调用Invocation](#调用invocation)
@@ -18,8 +18,9 @@
 + [模块Module](#模块module)
 + [级联Cascade](#级联cascade)
 + [柯里化Curry](#柯里化curry)
-+ [记忆Memoization](#记忆memoization)
-## 引言
++ [记忆Memoization](#记忆memoization)  
+
+## 引言  
 + 函数包含一组语句，它们是JS的基础模块单元，用于代码复用、信息隐藏和组合调用。
 + **函数用于指定对象的行为。**
 + 编程(program)就是将一组需求分解成一组函数和数据结构的技能！
@@ -54,6 +55,7 @@ var add = function (a, b) {
 + 通过函数字面量创建的函数对象包含一个连到外部上下文的连接，这被称为闭包(closure)。
 
 ## 调用Invocation
+[回到顶部](#目录)
 + 调用一个函数会暂停当前函数的执行，传递控制权和参数给新函数。除了声明时定义的形参，每个函数还接受两个附加的参数：this和arguments。
 + 参数this非常重要，它的值取决于调用的模式。
 ### 方法调用模式The Method Invocation Pattern
@@ -149,7 +151,8 @@ var statusObject = {
 //get_status 方法，尽管其没有一个名为 get_status 的方法
 var status = Quo.prototype.get_status.apply(statusObject);	// status 值为'A-OK'
 ```
-## 参数Arguments [回到顶部](#目录)
+## 参数Arguments 
+[回到顶部](#目录)
 + 当函数被调用时，被得到一个参数： aguments 数组。函数可以通过此参数访问它被调用时传递给它的参数列表，包括那些没有被分配给函数形参的多余参数。
 + 这使得编写一个无须指定参数个数的函数成为可能：
 ```javascript 
@@ -169,14 +172,16 @@ document.writeln(sum(4, 8, 15, 16, 23, 42));	// 108
 ```
 
 + 因为语言的一个设计错误， argument 并不是一个真正的数组。它只是一个类似数组(array-like)的对象，但它没有任何数组的方法。
-## 返回Return [回到顶部](#目录)
+## 返回Return 
+[回到顶部](#目录)
 + 当一个函数被调用时，它从第一个语句开始执行，并在遇到关闭函数体的）时结束，然后函数把控制权交给调用该函数的程序。
 + return 语句可用来使函数提前返回。当 return 语句被执行时，函数立即返回而不再执行余下的语句。
 + 一个函数总是会返回一个值，如果没有指定返回值，则返回 undefined 。
 + 如果函数调用时在前面加一个 new 前缀，且返回值不是一个对象，则返回this（该新对象）。
 ## 异常Exceptions
 + try() catch()
-## 扩充类型的功能Augmenting Types [回到顶部](#目录)
+## 扩充类型的功能Augmenting Types 
+[回到顶部](#目录)
 + 从第3章中可以看到，通过给Object.prototype 添加方法，可以让该方法对所有对象可用。这样的方式对函数、数组、字符串、数字、正则表达式同样适用。
 
 + 举例来说，可以通过给Function.prototype 增加方法来使得该方法对所有函数可用：
@@ -218,7 +223,8 @@ Function.prototype.method = function (name, func) {
 	return this;
 };
 ```
-## 递归Recursion [回到顶部](#目录)
+## 递归Recursion 
+[回到顶部](#目录)
 + 递归函数就是会直接或间接调用自身的一种函数。
 + 递归是一种强大的编程技术，它把一个问题分解成一组相似的子问题，每一个都用一般的方法去解决。一般来说，递归函数调用自身去解决它的子问题。
 + 递归函数可以非常高效地操作树形结构，比如浏览器的DOM。每次递归调用处理指定的树的一小段。
@@ -253,16 +259,23 @@ var getElementByAttribute = function (att, value) {
 ```
 [Demo](Demos/README.md#walk_the_dom)
 
-## 作用域Scope [回到顶部](#目录)
+## 作用域Scope 
+[回到顶部](#目录)
 
-## 闭包Closure [回到顶部](#目录)
+## 闭包Closure 
+[回到顶部](#目录)
 
-## 回调Callbacks [回到顶部](#目录)
+## 回调Callbacks 
+[回到顶部](#目录)
 
-## 模块Module	[回到顶部](#目录)
+## 模块Module	
+[回到顶部](#目录)
 
-## 级联Cascade	[回到顶部](#目录)
+## 级联Cascade	
+[回到顶部](#目录)
 
-## 柯里化Curry	[回到顶部](#目录)
+## 柯里化Curry	
+[回到顶部](#目录)
 
-## 记忆Memoization	[回到顶部](#目录)
+## 记忆Memoization
+[回到顶部](#目录)
