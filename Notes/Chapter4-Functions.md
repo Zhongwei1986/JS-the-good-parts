@@ -130,13 +130,71 @@ var statusObject = {
 var status = Quo.prototype.get_status.apply(statusObject);	// status 值为'A-OK'
 ```
 ## 参数Arguments
++ 当函数被调用时，被得到一个参数： aguments 数组。函数可以通过此参数访问它被调用时传递给它的参数列表，包括那些没有被分配给函数形参的多余参数。
++ 这使得编写一个无须指定参数个数的函数成为可能：
+```javascript 
+// 构造一个大量相加的函数，
+// 注意该函数内部定义的变量 sum 不会与函数外部定义的 sum 产生冲突，
+// 该函数只会看到内部的那个变量。
 
+var sum = function () {
+	var i, sum = 0;
+	for (i = 0; i <agument.length; i += 1){
+		sum += argument[i];
+	}
+	return sum;
+};
+
+document.writeln(sum(4, 8, 15, 16, 23, 42));	// 108
+```
+
++ 因为语言的一个设计错误， argument 并不是一个真正的数组。它只是一个类似数组(array-like)的对象，但它没有任何数组的方法。
 ## 返回Return
-
++ 当一个函数被调用时，它从第一个语句开始执行，并在遇到关闭函数体的）时结束，然后函数把控制权交给调用该函数的程序。
++ return 语句可用来使函数提前返回。当 return 语句被执行时，函数立即返回而不再执行余下的语句。
++ 一个函数总是会返回一个值，如果没有指定返回值，则返回 undefined 。
++ 如果函数调用时在前面加一个 new 前缀，且返回值不是一个对象，则返回this（该新对象）。
 ## 异常Exceptions
-
++ try() catch()
 ## 扩充类型的功能Augmenting Types
++ 从第3章中可以看到，通过给Object.prototype 添加方法，可以让该方法对所有对象可用。这样的方式对函数、数组、字符串、数字、正则表达式同样适用。
 
++ 举例来说，可以通过给Function.prototype 增加方法来使得该方法对所有函数可用：
+```javascript
+// 通过增加一个method方法，下次给对象原型增加方法时，可以不必键入prototype
+Function.prototype.method = function (name, func){
+	this.prototype[name] = func;
+	return this;
+};
+```
+> JS原生取整函数比较丑陋，可以给Number.prototype增加一个integer方法来改善：
+```javascript
+// 根据数字的正负来判断使用Math.ceil()还是Math.floor()
+Number.method('integer', function () {
+	return Math[this < 0 ? 'ceil' : 'floor'](this)
+})；
+
+document.writeln((-10/3).integer());		// -3
+```
++ JS缺少一个移除字符串首尾空白的方法：
+```javascript
+String.method('trim', function () {
+	return this.replace(/^\s+|\s+$/g, ''); //正则表达式用处是匹配字符串开始或结尾的空白符
+});
+
+document.wirteln('"' + "  neat  ".trim() + '"');
+```
++ 基本类型的原型是公用结构，在类库混用时务必小心，一个保险的做法是只在确定没有该方法时才添加它：
+```javascript
+
+
+Function.prototype.method = function (name, func) {
+	if(!this.prototype[name]) {
+		this.prototype[name] = func;
+	}
+	return this;
+};
+```
 ## 递归Recursion
 
 ## 作用域Scope
