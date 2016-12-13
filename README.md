@@ -33,4 +33,4 @@
 + 柯里化Curry
 + 记忆Memoization
 
-# DEMOS [链接](https://github.com/Zhongwei1986/JS-the-good-parts/blob/master/Demos/README.md)
+# DEMOS [链接](https://github.com/Zhongwei1986/JS-the-good-parts/blob/master/Demos)

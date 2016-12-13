@@ -215,7 +215,8 @@ var walk_the_DOM = function walk(node, func) {
 // 定义 getElementByAttribute 函数。它以一个属性名称字符串和一个可选的匹配值作为参数。
 // 它调用 walk_the_DOM，传递一个用来查找节点属性名的函数作为参数
 ```
-[Demo](https://github.com/Zhongwei1986/JS-the-good-parts/blob/master/Demos/Readme.md#walk_the_DOM)
+[Demo](https://github.com/Zhongwei1986/JS-the-good-parts/blob/master/Demos/README.md)
+
 ## 作用域Scope
 
 ## 闭包Closure
