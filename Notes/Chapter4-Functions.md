@@ -257,7 +257,7 @@ var getElementByAttribute = function (att, value) {
 	return results;
 }
 ```
-[Demo](Demos/README.md#walk_the_dom)
+[Demo](/Demos/README.md#walk_the_dom)
 
 ## 作用域Scope 
 [回到顶部](#目录)
