@@ -32,5 +32,5 @@
 + [级联Cascade](/Notes/Chapter4-Functions.md#级联cascade)
 + [柯里化Curry](/Notes/Chapter4-Functions.md#柯里化curry)
 + [记忆Memoization](/Notes/Chapter4-Functions.md#记忆memoization)
-+  
+  
 # DEMOS [链接](/Demos)
