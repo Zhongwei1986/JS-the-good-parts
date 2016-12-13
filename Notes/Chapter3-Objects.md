@@ -1,15 +1,15 @@
 ﻿# 第3章 对象Object
 ## 目录
 + [引言](#引言)
-+ [对象字面量 Object Literals](#对象字面量-Object-Literals)
-+ [检索 Retrieval](#检索-Retrieval)
-+ [更新 Update](#更新-Update])
-+ [引用 Reference](#引用-Reference)
-+ [原型 Prototype](#原型-Prototype)
-+ [反射 Reflection](#反射-Reflection)
-+ [枚举 Enumeration](#枚举-Enumeration)
++ [对象字面量 Object Literals](#对象字面量-object-literals)
++ [检索 Retrieval](#检索-retrieval)
++ [更新 Update](#更新-update])
++ [引用 Reference](#引用-reference)
++ [原型 Prototype](#原型-prototype)
++ [反射 Reflection](#反射-reflection)
++ [枚举 Enumeration](#枚举-enumeration)
 + [删除 Delete](#删除-delete)
-+ [Global Abatement 减少全局变量污染](#global-abatement-减少全局变量污染)
++ [减少全局变量污染 Global Abatement](#减少全局变量污染-global-abatement)
 
 ## 引言 
 + JS数据类型有两种：简单数据类型和对象
@@ -66,7 +66,7 @@ fight.equipment && fight.equipment.model		//undefined
 ## 删除 Delete
 + 删除对象的属性**可能**会让来自原型链中的属性暴露出来。
 
-## Global Abatement 减少全局变量污染
+## 减少全局变量污染 Global Abatement
 + 全局变量削弱的程序的灵活性，应该避免使用。
 + 最小化使用全局变量的方法之一是只创建一个唯一的命名空间。
 + 或者使用闭包，详见[下一章](https://github.com/Zhongwei1986/JS-the-good-parts/blob/master/Notes/Chapter4-Functions.md)。

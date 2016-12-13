@@ -2,7 +2,7 @@
 ## 目录
 
 - Chapter4 Function
-	- [walk_the_DOM](#walk_the_DOM)
+	- [walk_the_DOM](#walk_the_dom)
 
 ## 0. 引言 
 + JS数据类型有两种：简单数据类型和对象
