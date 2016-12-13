@@ -50,7 +50,7 @@ fight.equipment && fight.equipment.model		//undefined
 ## 原型 Prototype
 + 每个对象都连接到一个原型对象，可以从中继承属性
 + 所有字面量创建的对象都连接到Object.prototype
-+ 创建一个新对象时，可以选择某个对象作为它的原型。详见下一章[函数](https://github.com/Zhongwei1986/JS-the-good-parts/blob/master/Notes/Chapter4-Functions.md).
++ 创建一个新对象时，可以选择某个对象作为它的原型。详见下一章[函数](/Chapter4-Functions.md).
 + 原型连接只有在检索值的时候才会被用到。根据原型链层次向上查询属性值的过程叫**委托**。原型链的更多内容见第6章。
 
 ## 反射 Reflection
@@ -69,4 +69,4 @@ fight.equipment && fight.equipment.model		//undefined
 ## 减少全局变量污染 Global Abatement
 + 全局变量削弱的程序的灵活性，应该避免使用。
 + 最小化使用全局变量的方法之一是只创建一个唯一的命名空间。
-+ 或者使用闭包，详见[下一章](https://github.com/Zhongwei1986/JS-the-good-parts/blob/master/Notes/Chapter4-Functions.md)。
++ 或者使用闭包，详见[下一章](/Chapter4-Functions.md)。

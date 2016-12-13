@@ -1,6 +1,6 @@
 ﻿# NOTES
 
-## [Chapter3  Object对象](https://github.com/Zhongwei1986/JS-the-good-parts/blob/master/Notes/Chapter3-Objects.md)
+## [Chapter3  Object对象](/Notes/Chapter3-Objects.md)
 
 + 对象字面量 Object Literals
 + 检索 Retrieval
@@ -12,7 +12,7 @@
 + 删除 Delete
 + 减少全局变量污染 Global Abatement
 
-## [Chapter4 Function函数](https://github.com/Zhongwei1986/JS-the-good-parts/blob/master/Notes/Chapter4-Functions.md)
+## [Chapter4 Function函数](/Notes/Chapter4-Functions.md)
 + 函数对象Function Object
 + 函数字面量Function Literal
 + 调用Invocation
@@ -33,4 +33,4 @@
 + 柯里化Curry
 + 记忆Memoization
 
-# DEMOS [链接](https://github.com/Zhongwei1986/JS-the-good-parts/blob/master/Demos)
+# DEMOS [链接](/Demos)
