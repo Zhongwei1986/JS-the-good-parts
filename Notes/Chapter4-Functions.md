@@ -1,4 +1,5 @@
 ﻿# 第4章 函数Functions
+
 ## 引言
 + 函数包含一组语句，它们是JS的基础模块单元，用于代码复用、信息隐藏和组合调用。
 + **函数用于指定对象的行为。**
@@ -213,9 +214,22 @@ var walk_the_DOM = function walk(node, func) {
 };
 
 // 定义 getElementByAttribute 函数。它以一个属性名称字符串和一个可选的匹配值作为参数。
-// 它调用 walk_the_DOM，传递一个用来查找节点属性名的函数作为参数
+// 它调用 walk_the_DOM，传递一个用来查找节点属性名的函数作为参数.匹配的节点会累加到一个结果数组中。
+
+var getElementByAttribute = function (att, value) {
+	var result = [];
+	
+	walk_the_DOM(document.body, function (node) {
+		var actual = node.nodetype === 1 && node.getAttribute(att);  //&&短路操作，保证只有元素节点才会进行查找
+		if (typeof actual === 'string' &&
+				(actual === value || typeof value !== 'string')){
+			results.push(node);
+		}
+	});
+	return results;
+}
 ```
-[Demo](https://github.com/Zhongwei1986/JS-the-good-parts/blob/master/Demos/README.md#walk_the_dom)
+[Demo](/Demos/README.md#walk_the_dom)
 
 ## 作用域Scope
 
