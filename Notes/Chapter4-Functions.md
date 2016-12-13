@@ -188,6 +188,7 @@ Function.prototype.method = function (name, func){
 };
 ```
 > JS原生取整函数比较丑陋，可以给Number.prototype增加一个integer方法来改善：
+
 ```javascript
 // 根据数字的正负来判断使用Math.ceil()还是Math.floor()
 Number.method('integer', function () {
@@ -197,6 +198,7 @@ Number.method('integer', function () {
 document.writeln((-10/3).integer());		// -3
 ```
 + JS缺少一个移除字符串首尾空白的方法：
+
 ```javascript
 String.method('trim', function () {
 	return this.replace(/^\s+|\s+$/g, ''); //正则表达式用处是匹配字符串开始或结尾的空白符
@@ -204,7 +206,8 @@ String.method('trim', function () {
 
 document.wirteln('"' + "  neat  ".trim() + '"');
 ```
-+ 基本类型的原型是公用结构，在类库混用时务必小心，一个保险的做法是只在确定没有该方法时才添加它：
++ 基本类型的原型是公用结构，在类库混用时务必小心，一个保险的做法是只在确定没有该方法时才添加它:
+
 ```javascript
 // 符合条件时才添加方法
 
