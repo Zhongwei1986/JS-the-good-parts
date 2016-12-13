@@ -149,7 +149,7 @@ var statusObject = {
 //get_status 方法，尽管其没有一个名为 get_status 的方法
 var status = Quo.prototype.get_status.apply(statusObject);	// status 值为'A-OK'
 ```
-## 参数Arguments [回到顶部](#readme.md)
+## 参数Arguments [回到顶部](#目录)
 + 当函数被调用时，被得到一个参数： aguments 数组。函数可以通过此参数访问它被调用时传递给它的参数列表，包括那些没有被分配给函数形参的多余参数。
 + 这使得编写一个无须指定参数个数的函数成为可能：
 ```javascript 
@@ -169,14 +169,14 @@ document.writeln(sum(4, 8, 15, 16, 23, 42));	// 108
 ```
 
 + 因为语言的一个设计错误， argument 并不是一个真正的数组。它只是一个类似数组(array-like)的对象，但它没有任何数组的方法。
-## 返回Return
+## 返回Return [回到顶部](#目录)
 + 当一个函数被调用时，它从第一个语句开始执行，并在遇到关闭函数体的）时结束，然后函数把控制权交给调用该函数的程序。
 + return 语句可用来使函数提前返回。当 return 语句被执行时，函数立即返回而不再执行余下的语句。
 + 一个函数总是会返回一个值，如果没有指定返回值，则返回 undefined 。
 + 如果函数调用时在前面加一个 new 前缀，且返回值不是一个对象，则返回this（该新对象）。
 ## 异常Exceptions
 + try() catch()
-## 扩充类型的功能Augmenting Types
+## 扩充类型的功能Augmenting Types [回到顶部](#目录)
 + 从第3章中可以看到，通过给Object.prototype 添加方法，可以让该方法对所有对象可用。这样的方式对函数、数组、字符串、数字、正则表达式同样适用。
 
 + 举例来说，可以通过给Function.prototype 增加方法来使得该方法对所有函数可用：
@@ -218,7 +218,7 @@ Function.prototype.method = function (name, func) {
 	return this;
 };
 ```
-## 递归Recursion
+## 递归Recursion [回到顶部](#目录)
 + 递归函数就是会直接或间接调用自身的一种函数。
 + 递归是一种强大的编程技术，它把一个问题分解成一组相似的子问题，每一个都用一般的方法去解决。一般来说，递归函数调用自身去解决它的子问题。
 + 递归函数可以非常高效地操作树形结构，比如浏览器的DOM。每次递归调用处理指定的树的一小段。
@@ -253,16 +253,16 @@ var getElementByAttribute = function (att, value) {
 ```
 [Demo](Demos/README.md#walk_the_dom)
 
-## 作用域Scope
+## 作用域Scope [回到顶部](#目录)
 
-## 闭包Closure
+## 闭包Closure [回到顶部](#目录)
 
-## 回调Callbacks
+## 回调Callbacks [回到顶部](#目录)
 
-## 模块Module
+## 模块Module	[回到顶部](#目录)
 
-## 级联Cascade
+## 级联Cascade	[回到顶部](#目录)
 
-## 柯里化Curry
+## 柯里化Curry	[回到顶部](#目录)
 
-## 记忆Memoization
+## 记忆Memoization	[回到顶部](#目录)
