@@ -229,7 +229,7 @@ var getElementByAttribute = function (att, value) {
 	return results;
 }
 ```
-[Demo](./README.md#walk_the_dom)
+[Demo](/DEMOS/README.md#walk_the_dom)
 
 ## 作用域Scope
 
