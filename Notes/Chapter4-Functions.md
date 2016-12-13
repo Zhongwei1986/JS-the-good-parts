@@ -12,7 +12,7 @@
 ![](http://ocbao1wc2.bkt.clouddn.com/20161205hanshuyuanxinglian.jpg)
 
 + 每个函数在创建时会附加两个隐藏属性：函数的上下文和实现函数行为的代码（JS创建一个函数对象时，会给该对象设置一个“调用”属性，档JS调用一个函数时，可理解为调用此函数的“调用”属性）。
-+ 每个函数对象在创建时也随配有一个prototype属性。它的值是一个拥有constuctor属性且值即为该函数的对象。具体细节将在[下一章](Notes/Chapter5-Inheritance.md)展示
++ 每个函数对象在创建时也随配有一个prototype属性。它的值是一个拥有constuctor属性且值即为该函数的对象。具体细节将在[下一章](./Chapter5-Inheritance.md)展示
 
 ![](http://ocbao1wc2.bkt.clouddn.com/20161205prototype.jpg)
 
@@ -229,7 +229,7 @@ var getElementByAttribute = function (att, value) {
 	return results;
 }
 ```
-[Demo](/Demos/README.md#walk_the_dom)
+[Demo](./README.md#walk_the_dom)
 
 ## 作用域Scope
 

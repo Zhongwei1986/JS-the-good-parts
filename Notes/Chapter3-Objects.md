@@ -50,7 +50,7 @@ fight.equipment && fight.equipment.model		//undefined
 ## 原型 Prototype
 + 每个对象都连接到一个原型对象，可以从中继承属性
 + 所有字面量创建的对象都连接到Object.prototype
-+ 创建一个新对象时，可以选择某个对象作为它的原型。详见下一章[函数](/Chapter4-Functions.md).
++ 创建一个新对象时，可以选择某个对象作为它的原型。详见下一章[函数](./Chapter4-Functions.md).
 + 原型连接只有在检索值的时候才会被用到。根据原型链层次向上查询属性值的过程叫**委托**。原型链的更多内容见第6章。
 
 ## 反射 Reflection
