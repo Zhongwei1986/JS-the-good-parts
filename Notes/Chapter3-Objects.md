@@ -9,7 +9,8 @@
 + [反射 Reflection](#反射-Reflection)
 + [枚举 Enumeration](#枚举-Enumeration)
 + [删除 Delete](#删除-Delete)
-+ [Global Abatement 减少全局变量污染](#Global-Abatement-减少全局变量污染)
++ [Global Abatement 减少全局变量污染](#global-abatement-减少全局变量污染)
+
 ## 引言 
 + JS数据类型有两种：简单数据类型和对象
 
