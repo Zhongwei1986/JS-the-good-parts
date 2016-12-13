@@ -1,5 +1,24 @@
 ﻿# 第4章 函数Functions
-
+##目录
++ [函数对象Function Object](#函数对象function-object)
++ [函数字面量Function Literal](#函数字面量function-literal)
++ [调用Invocation](#调用invocation)
+	+ 方法调用模式The Method Invocation Pattern
+	+ 函数调用模式The Function Invocation Pattern
+	+ 构造器调用模式The Constructor Invocation Pattern
+	+ Apply调用模式The Apply Invocation Pattern
++ [参数Arguments](#参数arguments)
++ [返回Return](#返回return)
++ [异常Exceptions](#异常exceptions)
++ [扩充类型的功能Augmenting Types](#扩充类型的功能augmenting-types)
++ [递归Recursion](#递归recursion)
++ [作用域Scope](#作用域scope)
++ [闭包Closure](#闭包closure)
++ [回调Callbacks](#回调callbacks)
++ [模块Module](#模块module)
++ [级联Cascade](#级联cascade)
++ [柯里化Curry](#柯里化curry)
++ [记忆Memoization](#记忆memoization)
 ## 引言
 + 函数包含一组语句，它们是JS的基础模块单元，用于代码复用、信息隐藏和组合调用。
 + **函数用于指定对象的行为。**
@@ -130,7 +149,7 @@ var statusObject = {
 //get_status 方法，尽管其没有一个名为 get_status 的方法
 var status = Quo.prototype.get_status.apply(statusObject);	// status 值为'A-OK'
 ```
-## 参数Arguments
+## 参数Arguments [回到顶部](#readme.md)
 + 当函数被调用时，被得到一个参数： aguments 数组。函数可以通过此参数访问它被调用时传递给它的参数列表，包括那些没有被分配给函数形参的多余参数。
 + 这使得编写一个无须指定参数个数的函数成为可能：
 ```javascript 
@@ -229,7 +248,7 @@ var getElementByAttribute = function (att, value) {
 	return results;
 }
 ```
-[Demo](/DEMOS/README.md#walk_the_dom)
+[Demo](Demos/README.md#walk_the_dom)
 
 ## 作用域Scope
 
