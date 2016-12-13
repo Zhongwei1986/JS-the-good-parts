@@ -69,4 +69,4 @@ fight.equipment && fight.equipment.model		//undefined
 ## 减少全局变量污染 Global Abatement
 + 全局变量削弱的程序的灵活性，应该避免使用。
 + 最小化使用全局变量的方法之一是只创建一个唯一的命名空间。
-+ 或者使用闭包，详见[下一章](/Chapter4-Functions.md)。
++ 或者使用闭包，详见[下一章](./Chapter4-Functions.md)。
