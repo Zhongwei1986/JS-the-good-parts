@@ -1,5 +1,7 @@
 ﻿# 第4章 函数Functions
-##目录  
+
+## 目录  
+
 + [函数对象Function Object](#函数对象function-object)
 + [函数字面量Function Literal](#函数字面量function-literal)
 + [调用Invocation](#调用invocation)
@@ -252,16 +254,16 @@ var getElementByAttribute = function (att, value) {
 	var result = [];
 	
 	walk_the_DOM(document.body, function (node) {
-		var actual = node.nodetype === 1 && node.getAttribute(att);  //&&短路操作，保证只有元素节点才会进行查找
+		var actual = node.nodeType === 1 && node.getAttribute(att);  //&&短路操作，保证只有元素节点才会进行查找
 		if (typeof actual === 'string' &&
 				(actual === value || typeof value !== 'string')){
-			results.push(node);
+			result.push(node);
 		}
 	});
-	return results;
+	return result;
 }
 ```
-[Demo](/Demos/README.md#walk_the_dom)
+[Demo,在控制台观察结果](/Demos/README.md#walk_the_dom)
 
 ## 作用域Scope 
 [回到顶部](#目录)
