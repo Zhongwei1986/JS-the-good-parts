@@ -14,16 +14,16 @@ var walk_the_DOM = function walk(node, func) {
 // 它调用 walk_the_DOM，传递一个用来查找节点属性名的函数作为参数.匹配的节点会累加到一个结果数组中。
 
 var getElementByAttribute = function (att, value) {
-	var result = [];
+	var results = [];
 
 		walk_the_DOM(document.body, function (node) {
 		var actual = node.nodeType === 1 && node.getAttribute(att);
 		if (typeof actual === 'string' &&
 				(actual === value || typeof value !== 'string')){
-			result.push(node);
+			results.push(node);
 		}
 	});
-	return result;	
+	return results;	
 }
 
 console.log(getElementByAttribute("id"));   //更改查询字符串来得到不同的值
