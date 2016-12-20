@@ -272,9 +272,55 @@ var getElementByAttribute = function (att, value) {
 + JS代码块语法貌似支持块级作用域，但实际上并不支持。
 + JS确实有函数作用域：函数中的参数和变量在函数外不可见，而一个函数内部任何位置定义的变量，在该函数内部任何地方都是可见的。
 + 许多块级作用域的语言都尽可能延迟声明变量，而JS则最好在函数顶部声明函数中可能用到的所有变量。
+
 ## 闭包Closure 
 [回到顶部](#目录)
++ 作用域的好处是内部函数可以访问定义它们的外部函数的参数和变量（除了外部函数的this和arguments）。
++ 可以使内部函数拥有比它的外部函数更长的生命周期。
++ 之前使用字面量形式定义了myObject对象：
+> ```javascript
+> var myObject = {
+>	value: 0,
+>	increment: function (inc) {
+>		this.value += typeof inc === ''number ? inc : 1;  //inc是数字则加给value，否在value加1
+>	}
+> };
+> ```
++ 下面改用一个函数的形式去初始化同样的对象：
+```javascript
+//value变量对increment()和getValue()总是可见的，但是对于其它程序来说是不可见的。
+var myObject = (function () {
+	var value = 0;
+	
+	return {
+		increment : function (inc) {
+			value += typeof inc === 'number' ? inc : 1;
+		},
+		getValue : fucntion () {
+			return value;
+		}
+	};
+}
+```
++ 之前的Quo构造器函数也不够有趣，为什么要用一个getter方法去访问一个本可以直接访问的属性（status）呢？如果status是私有属性，getter才更有意义
+```javascript
+//创建一个叫quo构造函数
+//它构造出带有get_status 方法和 status 私有属性的一个对象
+var quo = function (status) {
+	return {
+		get_status :　function () {
+			return status;
+		}
+	};
+}
 
+//构造一个quo实例
+
+var myQuo = quo("amazed");
+doucument.writeln(myQuo.get_status);	// 输出"amazed"
+```
++ 即使quo函数已经返回了，get_status()依然可以访问quo对象(实例)的status属性，并不是访问该参数的一个副本，而是参数本身。
++ 闭包： 函数可以访问它被创建时所处的上下文环境(this的值)。
 ## 回调Callbacks 
 [回到顶部](#目录)
 
