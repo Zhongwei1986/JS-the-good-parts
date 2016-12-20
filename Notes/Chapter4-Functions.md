@@ -257,7 +257,7 @@ var getElementByAttribute = function (att, value) {
 		var actual = node.nodeType === 1 && node.getAttribute(att);  //&&短路操作，保证只有元素节点才会进行查找
 		if (typeof actual === 'string' &&
 				(actual === value || typeof value !== 'string')){
-			result.push(node);
+			results.push(node);
 		}
 	});
 	return result;
@@ -267,7 +267,11 @@ var getElementByAttribute = function (att, value) {
 
 ## 作用域Scope 
 [回到顶部](#目录)
-
++ 作用域控制 变量与参数的可见性及生命周期，它减少了名称冲突，并且提供了自动内存管理。
++ 大多数类C语言语法的语言都拥有块级作用域。在一个代码块内定义的所有变量在代码块的外部是不可见的。定义在代码块执行结束后会被释放掉。
++ JS代码块语法貌似支持块级作用域，但实际上并不支持。
++ JS确实有函数作用域：函数中的参数和变量在函数外不可见，而一个函数内部任何位置定义的变量，在该函数内部任何地方都是可见的。
++ 许多块级作用域的语言都尽可能延迟声明变量，而JS则最好在函数顶部声明函数中可能用到的所有变量。
 ## 闭包Closure 
 [回到顶部](#目录)
 
