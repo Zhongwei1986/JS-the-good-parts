@@ -5,16 +5,19 @@ var fade = function(node) {
     var step = function() {
         var hex = level.toString(16); //转换成十六进制数
         // console.log(hex);
-        node.style.backgroudColor = '#EEEE' + hex + hex;
-        console.log(node.style.backgroudColor);
+        node.style.backgroudColor = '#FFFF' + hex + hex;
+        // console.log(node.style);
         if (level < 15) { // hex 不大于 F
             level += 1;
-            console.log(level);
-            console.log(node.style.backgroudColor);
-            setTimeout(step, 100);
+            // console.log(level);
+            // console.log(node.style.backgroudColor);
+            setTimeout(step, 1000);
         }
-    };
+    };    
     setTimeout(step, 100); //在fade函数结束后约100ms调用step函数，此时，step函数的node参数指向document.body
 };
 
-fade(document.body)
+var test = document.getElementsByClassName('test')[0];
+console.log(test);
+// test.style.backgroundColor = '#39b54a';
+fade(test);
