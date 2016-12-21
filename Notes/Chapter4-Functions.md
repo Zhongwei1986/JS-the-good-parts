@@ -251,7 +251,7 @@ var walk_the_DOM = function walk(node, func) {
 // 它调用 walk_the_DOM，传递一个用来查找节点属性名的函数作为参数.匹配的节点会累加到一个结果数组中。
 
 var getElementByAttribute = function (att, value) {
-	var result = [];
+	var results = [];
 	
 	walk_the_DOM(document.body, function (node) {
 		var actual = node.nodeType === 1 && node.getAttribute(att);  //&&短路操作，保证只有元素节点才会进行查找
@@ -260,10 +260,10 @@ var getElementByAttribute = function (att, value) {
 			results.push(node);
 		}
 	});
-	return result;
+	return results;
 }
 ```
-[Demo,在控制台观察结果](/Demos/README.md#walk_the_dom)
+[Demo:在控制台观察结果](/Demos/README.md#walk_the_dom)
 
 ## 作用域Scope 
 [回到顶部](#目录)
@@ -321,6 +321,66 @@ doucument.writeln(myQuo.get_status);	// 输出"amazed"
 ```
 + 即使quo函数已经返回了，get_status()依然可以访问quo对象(实例)的status属性，并不是访问该参数的一个副本，而是参数本身。
 + 闭包： 函数可以访问它被创建时所处的上下文环境(this的值)。
++ 一个更有趣的例子：
+```javascript
+//定义一个函数，它设置一个DOM节点为黄色，然后把它渐变为白色。
+
+var fade = function (node) {
+	var level = 1;
+	var step = function () {
+		var hex = level.toString(16);	//转换成十六进制数
+		node.style.backgroudColor = '#FFFF' + hex + hex;
+		if(level < 15) {  // hex 不大于 F
+			level += 1;
+			setTimeout(step, 100);
+		}
+	};
+	setTimeout(step, 100);    //在fade函数结束后约100ms调用step函数，此时，step函数的node参数指向document.body
+}; 
+
+fade(document.body)
+```
+[Demo:使网易颜色由黄变白](/Demos/README.md#walk_the_dom)
++ 为避免下面的问题，立即内部函数能访问外部函数的实际变量而无须复制是很重要的。
+
+```javascript
+//糟糕例子
+
+//构造一个函数，用错误的方式给一个数组中的节点设置事件处理程序。
+//当点击一个节点时，按照预期，应该弹出一个对话框显示节点的序号，
+//但它总是会显示节点的数目
+
+var add_the_haddlers = function (nodes) {
+	var i;
+	for (i = 0; i < nodes.length; i++){
+		nodes[i].onclick = function (e) {
+			alert(i);
+		};
+	}
+};
+```
++ add_the_handdlers 函数的本意是想传递给每个事件处理器一个唯一值(i)，但未能达到目的，因为事件处理器函数绑定了变量本身，而不是事件处理器函数在构造时的变量i的**值**
+
+```javascript
+//改良后的例子
+
+//构造一个函数，用错误的方式给一个数组中的节点设置事件处理程序。
+//当点击一个节点时，弹出一个对话框显示节点的序号
+
+var add_the_handlers = function (nodes) {
+	var helper = function (i) {
+		return function (e) {
+			alert(i);
+		};
+	};
+	var i;
+	for (i = 0; i < nodes.length; i++) {
+		nodes[i].onclick = helper(i);
+	}
+};
+```
++ 避免在循环中创建函数，它可能带来无谓的计算，还会引起混淆，上面的例子中，先在循环之外创建一个辅助函数，让这个辅助函数在返回一个绑定了当前值的函数，这样就不会导致混淆了。
+
 ## 回调Callbacks 
 [回到顶部](#目录)
 
