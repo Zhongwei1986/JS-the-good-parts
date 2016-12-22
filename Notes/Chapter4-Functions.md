@@ -329,7 +329,7 @@ var fade = function (node) {
 	var level = 1;
 	var step = function () {
 		var hex = level.toString(16);	//转换成十六进制数
-		node.style.backgroudColor = '#FFFF' + hex + hex;
+		node.style.backgroundColor = '#FFFF' + hex + hex;
 		if(level < 15) {  // hex 不大于 F
 			level += 1;
 			setTimeout(step, 100);
@@ -340,7 +340,7 @@ var fade = function (node) {
 
 fade(document.body)
 ```
-[Demo:使网易颜色由黄变白](/Demos/README.md#walk_the_dom)
+[Demo:使节点颜色由黄变白](/Demos/README.md#fade)
 + 为避免下面的问题，立即内部函数能访问外部函数的实际变量而无须复制是很重要的。
 
 ```javascript

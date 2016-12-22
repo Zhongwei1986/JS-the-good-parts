@@ -4,6 +4,7 @@
 - [Chapter4 Function](#chapter4-function)
 	- [walk_the_DOM](#walk_the_dom)
 	- [fade](#fade)
+	- [add_the_haddlers](#add_the_haddlers)
 
 ## Chapeter4 Function
 ### walk_the_DOM
@@ -44,7 +45,7 @@ var fade = function (node) {
 	var level = 1;
 	var step = function () {
 		var hex = level.toString(16);	//转换成十六进制数
-		node.style.backgroudColor = '#FFFF' + hex + hex;
+		node.style.backgroundColor = '#FFFF' + hex + hex;
 		if(level < 15) {  // hex 不大于 F
 			level += 1;
 			setTimeout(step, 100);
@@ -55,3 +56,5 @@ var fade = function (node) {
 
 fade(document.body)
 ```
+
+### add_the_haddlers
