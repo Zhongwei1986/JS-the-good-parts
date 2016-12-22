@@ -154,8 +154,11 @@ var statusObject = {
 //get_status 方法，尽管其没有一个名为 get_status 的方法
 var status = Quo.prototype.get_status.apply(statusObject);	// status 值为'A-OK'
 ```
-## 参数Arguments 
+
+## 参数Arguments
+
 [回到顶部](#目录)
+
 + 当函数被调用时，被得到一个参数： aguments 数组。函数可以通过此参数访问它被调用时传递给它的参数列表，包括那些没有被分配给函数形参的多余参数。
 + 这使得编写一个无须指定参数个数的函数成为可能：
 ```javascript 
@@ -177,7 +180,9 @@ document.writeln(sum(4, 8, 15, 16, 23, 42));	// 108
 + 因为语言的一个设计错误， argument 并不是一个真正的数组。它只是一个类似数组(array-like)的对象，但它没有任何数组的方法。
 
 ## 返回Return 
+
 [回到顶部](#目录)
+
 + 当一个函数被调用时，它从第一个语句开始执行，并在遇到关闭函数体的）时结束，然后函数把控制权交给调用该函数的程序。
 + return 语句可用来使函数提前返回。当 return 语句被执行时，函数立即返回而不再执行余下的语句。
 + 一个函数总是会返回一个值，如果没有指定返回值，则返回 undefined 。
@@ -263,7 +268,7 @@ var getElementByAttribute = function (att, value) {
 	return results;
 }
 ```
-[Demo:在控制台观察结果](/Demos/README.md#walk_the_dom)
+[Demo:遍历DOM树](/Demos/README.md#walk_the_dom)
 
 ## 作用域Scope 
 [回到顶部](#目录)
@@ -278,14 +283,14 @@ var getElementByAttribute = function (att, value) {
 + 作用域的好处是内部函数可以访问定义它们的外部函数的参数和变量（除了外部函数的this和arguments）。
 + 可以使内部函数拥有比它的外部函数更长的生命周期。
 + 之前使用字面量形式定义了myObject对象：
-> ```javascript
-> var myObject = {
->	value: 0,
->	increment: function (inc) {
->		this.value += typeof inc === ''number ? inc : 1;  //inc是数字则加给value，否在value加1
->	}
-> };
-> ```
+```javascript
+var myObject = {
+	value: 0,
+	increment: function (inc) {
+		this.value += typeof inc === ''number ? inc : 1;  //inc是数字则加给value，否在value加1
+	}
+};
+```
 + 下面改用一个函数的形式去初始化同样的对象：
 ```javascript
 //value变量对increment()和getValue()总是可见的，但是对于其它程序来说是不可见的。
@@ -340,7 +345,7 @@ var fade = function (node) {
 
 fade(document.body)
 ```
-[Demo:使节点颜色由黄变白](/Demos/README.md#fade)
+[Demo:改变节点颜色](/Demos/README.md#fade)
 + 为避免下面的问题，立即内部函数能访问外部函数的实际变量而无须复制是很重要的。
 
 ```javascript
@@ -350,7 +355,7 @@ fade(document.body)
 //当点击一个节点时，按照预期，应该弹出一个对话框显示节点的序号，
 //但它总是会显示节点的数目
 
-var add_the_haddlers = function (nodes) {
+var add_the_handlers = function (nodes) {
 	var i;
 	for (i = 0; i < nodes.length; i++){
 		nodes[i].onclick = function (e) {
@@ -359,7 +364,7 @@ var add_the_haddlers = function (nodes) {
 	}
 };
 ```
-+ add_the_handdlers 函数的本意是想传递给每个事件处理器一个唯一值(i)，但未能达到目的，因为事件处理器函数绑定了变量本身，而不是事件处理器函数在构造时的变量i的**值**
++ add_the_handlers 函数的本意是想传递给每个事件处理器一个唯一值(i)，但未能达到目的，因为事件处理器函数绑定了变量本身，而不是事件处理器函数在构造时的变量i的**值**
 
 ```javascript
 //改良后的例子
@@ -380,6 +385,8 @@ var add_the_handlers = function (nodes) {
 };
 ```
 + 避免在循环中创建函数，它可能带来无谓的计算，还会引起混淆，上面的例子中，先在循环之外创建一个辅助函数，让这个辅助函数在返回一个绑定了当前值的函数，这样就不会导致混淆了。
+
+[Demo:add_the_handlers](/Demos/README.md#add_the_handlers)
 
 ## 回调Callbacks 
 [回到顶部](#目录)

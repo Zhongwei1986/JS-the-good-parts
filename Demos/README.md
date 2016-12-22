@@ -1,13 +1,17 @@
 ﻿# Demos for 《Javascript:the Good Parts》
+
++ 本书DEMO均在书本关键代码基础上进行必要的补充，确保可以在浏览器中查看效果。DEMO按章节进行存放，请下载DEMOS文件夹至本地。
+
 ## 目录
 
 - [Chapter4 Function](#chapter4-function)
 	- [walk_the_DOM](#walk_the_dom)
 	- [fade](#fade)
-	- [add_the_haddlers](#add_the_haddlers)
+	- [add_the_handlers](#add_the_handlers)
 
 ## Chapeter4 Function
 ### walk_the_DOM
++ 在谷歌浏览器中打开wale_the_DOM.html，在后台查看输出。
 ```javascript
 //定义 walk_the_DOM 函数，它从某个指定的节点开始，按HTML源码中的顺序访问该树的某个节点。
 //它会调用一个函数，并依次传递每个节点给它。walk_the_DOM 调用自身去处理每个节点
@@ -38,6 +42,7 @@ var getElementByAttribute = function (att, value) {
 }
 ```
 ### fade
++ 在浏览器中打开fade.html，观看动画效果。可以更改setTimeout()函数中第二个参数，如改成1000，则颜色变化速度会变慢。
 ```javascript
 //定义一个函数，它设置一个DOM节点为黄色，然后把它渐变为白色。
 
@@ -57,4 +62,42 @@ var fade = function (node) {
 fade(document.body)
 ```
 
-### add_the_haddlers
+### add_the_handlers
++ 打开add_the_handlers-1.html，点击按钮，查看弹框提示数字。
+
+```javascript
+//糟糕例子
+
+//构造一个函数，用错误的方式给一个数组中的节点设置事件处理程序。
+//当点击一个节点时，按照预期，应该弹出一个对话框显示节点的序号，
+//但它总是会显示节点的数目
+
+var add_the_handlers = function (nodes) {
+	var i;
+	for (i = 0; i < nodes.length; i++){
+		nodes[i].onclick = function (e) {
+			alert(i);
+		};
+	}
+};
+```
++ 打开add_the_handlers-2.html，点击按钮，查看弹框提示数字。
+
+```javascript
+//改良后的例子
+
+//构造一个函数，用错误的方式给一个数组中的节点设置事件处理程序。
+//当点击一个节点时，弹出一个对话框显示节点的序号
+
+var add_the_handlers = function (nodes) {
+	var helper = function (i) {
+		return function (e) {
+			alert(i);
+		};
+	};
+	var i;
+	for (i = 0; i < nodes.length; i++) {
+		nodes[i].onclick = helper(i);
+	}
+};
+```

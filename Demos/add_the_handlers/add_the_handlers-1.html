@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>add_the_handlers</title>
+    <style>
+    .btn {
+        width: 50px;
+        display: block;
+        margin-top: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <input type="button" class="btn" value="1">
+        <input type="button" class="btn" value="2">
+        <input type="button" class="btn" value="3">
+        <input type="button" class="btn" value="4">
+        <input type="button" class="btn" value="5">
+    </form>
+    <script>
+    //糟糕例子
+
+    //构造一个函数，用错误的方式给一个数组中的节点设置事件处理程序。
+    //当点击一个节点时，按照预期，应该弹出一个对话框显示节点的序号，
+    //但它总是会显示节点的数目
+
+    var add_the_handlers = function(nodes) {
+        var i;
+        for (i = 0; i < nodes.length; i++) {
+            nodes[i].onclick = function(e) {
+                alert(i);
+            };
+        }
+    };
+
+    //获得button元素
+    var btns = document.getElementsByClassName('btn');
+
+    //调用函数
+    add_the_handlers(btns);
+    </script>
+</body>
+
+</html>
