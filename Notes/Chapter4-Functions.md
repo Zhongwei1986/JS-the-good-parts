@@ -81,7 +81,9 @@ document.wirteln(myObject.value);  // 3
 + 方法可以使用this调用自己所属的对象，所以它能从对象中取值或对对象进行修改
 + **this到对象的绑定发生在调用的时候。这个“超级”延迟绑定使得函数可以对this高度复用。**
 + 通过this可取得它们所属对象的上下文的方法称为公共方法(pubilc method)
+
 ### 函数调用模式The Function Invocation Pattern
+
 + 当一个函数并非一个对象的属性时，那么它就是被当做一个函数来调用：
 ```javascript
 var sum = add(3,4)  //sun的值为7
@@ -108,6 +110,7 @@ myObject.double();
 document.writeln(myObject.value);		// 6
 ```
 ### 构造器调用模式The Constructor Invocation Pattern
+
 + JS是一门基于原型继承的语言，意味着对象可以直接从其它对象继承属性，该语言是无类型的。
 + 这偏离了当今编程语言的主流风格，当今大多数语言都是基于类的语言。尽管原型继承极富表现力，但它并未被广泛立即。
 + JavaScript本身对它原型的本质也缺乏信心，所以它提供了一套和基于类的语言类似的对象构建语法。
@@ -135,6 +138,7 @@ document.writeln(myQuo.get_status());	//打印"confused"
 + 一个函数，如果创建的目的就是希望结合 new 的前缀来调用，那它就称为构造器函数，按照约定，它们保存在以大写格式命名的变量里。
 
 ### Apply调用模式The Apply Invocation Pattern
+
 + 因为JS是一门函数式的面向对象编程语言，所以函数可以拥有方法
 + apply方法让我们构建一个参数数组传递给调用函数，它也允许我们选择this的值。apply方法接受两个参数，第一个是要绑定给this的值，第二个就是参数数组.
 
@@ -192,6 +196,7 @@ document.writeln(sum(4, 8, 15, 16, 23, 42));	// 108
 + try() catch()
 
 ## 扩充类型的功能Augmenting Types 
+
 [回到顶部](#目录)
 + 从第3章中可以看到，通过给Object.prototype 添加方法，可以让该方法对所有对象可用。这样的方式对函数、数组、字符串、数字、正则表达式同样适用。
 
@@ -270,7 +275,8 @@ var getElementByAttribute = function (att, value) {
 ```
 [Demo:遍历DOM树](/Demos/README.md#walk_the_dom)
 
-## 作用域Scope 
+## 作用域Scope
+ 
 [回到顶部](#目录)
 + 作用域控制 变量与参数的可见性及生命周期，它减少了名称冲突，并且提供了自动内存管理。
 + 大多数类C语言语法的语言都拥有块级作用域。在一个代码块内定义的所有变量在代码块的外部是不可见的。定义在代码块执行结束后会被释放掉。
@@ -279,6 +285,7 @@ var getElementByAttribute = function (att, value) {
 + 许多块级作用域的语言都尽可能延迟声明变量，而JS则最好在函数顶部声明函数中可能用到的所有变量。
 
 ## 闭包Closure 
+
 [回到顶部](#目录)
 + 作用域的好处是内部函数可以访问定义它们的外部函数的参数和变量（除了外部函数的this和arguments）。
 + 可以使内部函数拥有比它的外部函数更长的生命周期。
@@ -388,10 +395,12 @@ var add_the_handlers = function (nodes) {
 
 [Demo:add_the_handlers](/Demos/README.md#add_the_handlers)
 
-## 回调Callbacks 
+## 回调Callbacks
+ 
 [回到顶部](#目录)
 + 网络上的同步请求会导致客户端进入假死状态。如果网络传输或服务器很慢，响应会慢得让人不可接受。
 + 更好的方式是发起异步请求，提供一个当服务器的响应到达时随机触发的回调函数，异步函数立即返回，这样客户端就不会被阻塞。
+
 ## 模块Module	
 [回到顶部](#目录)
 
